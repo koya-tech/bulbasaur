@@ -1,0 +1,37 @@
+a {
+    color: #424A57;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer {
+    padding: 2rem;
+    font-size: 15px;
+    color: #555c67;
+    background: #fff;
+    border-top: 1px solid #d1d2d5;
+
+    @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    a:hover {
+        color: #000;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .md-flex {
+        display: flex;
+
+        li+li {
+            margin-left: 16px;
+        }
+    }
+}
