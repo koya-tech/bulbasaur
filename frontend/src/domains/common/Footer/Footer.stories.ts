@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn, within, expect } from '@storybook/test';
 import Footer from './Footer';
+// eslint-disable-next-line import/extensions
+import { webList, aboutList } from '@/mappingItem/footer';
 
 const meta = {
     title: 'Bulbasaur/Footer',
@@ -21,6 +23,14 @@ export const Primary: Story = {
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
+
+        await Promise.all(webList.map(async (item) => {
+            await expect(canvas.getByText(`${item.label}`)).toBeInTheDocument();
+        }));
+
+        await Promise.all(aboutList.map(async (item) => {
+            await expect(canvas.getByText(`${item.label}`)).toBeInTheDocument();
+        }));
 
         await expect(canvas.getByText('Copyright © 2024 Koya-tech')).toBeInTheDocument();
         await expect(canvas.getByTestId('twitter-icon')).toBeInTheDocument();

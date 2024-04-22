@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -18,6 +19,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        'footer-background-color': '#dadbdb',
+        'footer-text-color': '#555c67',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
