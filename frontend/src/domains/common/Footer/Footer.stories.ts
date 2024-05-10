@@ -1,16 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn, within, expect } from '@storybook/test';
+import { within, expect } from '@storybook/test';
 import Footer from './Footer';
 // eslint-disable-next-line import/extensions
-import { webList, aboutList } from '@/mappingItem/footer';
+import { routeList } from '../constants/index';
 
 const meta = {
-    title: 'Bulbasaur/Footer',
     component: Footer,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-    args: { onClick: fn() },
 } satisfies Meta<typeof Footer>;
 
 export default meta;
@@ -24,11 +19,11 @@ export const Primary: Story = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await Promise.all(webList.map(async (item) => {
+        await Promise.all(routeList.map(async (item) => {
             await expect(canvas.getByText(`${item.label}`)).toBeInTheDocument();
         }));
 
-        await Promise.all(aboutList.map(async (item) => {
+        await Promise.all(routeList.map(async (item) => {
             await expect(canvas.getByText(`${item.label}`)).toBeInTheDocument();
         }));
 

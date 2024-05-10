@@ -1,0 +1,28 @@
+https://json-generator.com/#
+
+[
+  '{{repeat(5, 7)}}',
+  {
+    index: '{{index()}}',
+    storeName: '{{company().toUpperCase()}}',
+    storeDescription: '{{lorem(1, "paragraphs")}}',
+    storeScore:'{{integer(1,5)}}',
+    conuntry:'{{country()}}',
+    storeAdress: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    storeImage: [
+      '{{repeat(3, 5)}}',
+         {
+                index:  '{{index()}}',
+                streoImage: 'http://placehold.it/32x32'
+         }
+    ],
+    businessHours: {
+            start: '09:00',
+            end: '23:00'
+    },
+    genre: 'Western',
+    RegularHoliday: 'sunday',
+    createdAt: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    updatedAt: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
+  }
+]

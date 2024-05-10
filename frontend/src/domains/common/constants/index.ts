@@ -1,23 +1,27 @@
-export const webList = [
+export const routeList = [
     {
         route: '/',
         label: 'Home',
     },
     {
-        route: '/searchByMap',
-        label: 'Search by map',
+        route: '/discover',
+        label: 'Discover',
     },
     {
-        route: '/profile',
-        label: 'Profile',
+        route: '/share',
+        label: 'Share',
     },
     {
         route: '/about',
         label: 'About',
     },
+    {
+        route: '/profile',
+        label: 'Profile',
+    },
 ];
 
-export const aboutList = [
+export const serviceInfoList = [
     {
         route: '/service',
         label: 'Service',

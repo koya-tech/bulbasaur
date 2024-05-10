@@ -1,15 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn, within, expect } from '@storybook/test';
+import { within, expect } from '@storybook/test';
 import Header from './Header';
 // eslint-disable-next-line import/extensions
 
 const meta = {
-    title: 'Bulbasaur/Header',
     component: Header,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-    args: { onClick: fn() },
 } satisfies Meta<typeof Header>;
 
 export default meta;
