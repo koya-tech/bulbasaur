@@ -31,11 +31,11 @@ function Home() {
             <h2 className="flex pt-24 pb-12 justify-center text-2xl">
                 Dinebnb Experiences
             </h2>
-            <div className="flex justify-evenly pb-24">
+            <div className="md:flex justify-evenly pb-24">
                 {/* <div>Discover Your Special Eatery</div> */}
                 {experienceList.map((item) => (
                     <Link to={item.url} className="w-1/2">
-                        <figure className="relative h-96 px-10 hover:drop-shadow-2xl">
+                        <figure className="relative h-96 px-10 hover:drop-shadow-2xl py-5">
                             <img
                                 className="drop-shadow-2xl h-full w-full rounded-xl object-cover object-center"
                                 src={item.img}

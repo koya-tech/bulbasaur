@@ -18,7 +18,7 @@ function Discover() {
                     />
                 ))}
             </div>
-            <div className="basis-1/2">
+            <div className="basis-1/2 z-40">
                 <LeafletMap />
             </div>
         </div>
