@@ -1,0 +1,109 @@
+@startuml EateryAggregation
+
+title Eatery Aggregation
+
+package "EateryAggregation" {
+    ' 1. エンティティの定義
+    class Eatery << (R,red) RootEntity >> {
+        eateryId
+        storeName
+        storeDescription
+        storeScore
+        conuntry
+        storeAdress
+        location
+        storeImages
+        businessHours
+        genre
+        RegularHoliday
+        createdAt
+        updatedAt
+    }
+
+    class EateryList << (E,green) Entity >> {
+        eateryListId
+        listType
+    }
+
+    class eateryId {
+        + value: string
+    }
+
+    class storeName {
+        + value: string
+    }
+
+    class storeDescription {
+        + value: string
+    }
+
+    class storeScore {
+        + value: number
+    }
+
+    class conuntry {
+        + value: string
+    }
+
+    class storeAdress {
+        + value: string
+    }
+
+    class location {
+        + value: string
+    }
+
+    class storeImages {
+        + value: number
+    }
+
+    class businessHours {
+        + value: number
+    }
+
+    class genre {
+        + value: Enum { Western, Chinese, Japanese, Italian, Others }
+    }
+
+    class RegularHoliday {
+        + value: string
+    }
+
+    class createdAt {
+        + value: time
+    }
+
+    class updatedAt {
+        + value: time
+    }
+
+    class eateryListId {
+        + value: string
+    }
+
+    class listType {
+        + value: Enum { myEatery, favorite}
+    }
+
+    Eatery "1" -down- "1" EateryList : has >
+    Eatery *-down- eateryId
+    Eatery *-down- storeName
+    Eatery *-down- storeDescription
+    Eatery *-down- storeScore
+    Eatery *-down- conuntry
+    Eatery *-down- storeAdress
+    Eatery *-down- location
+    Eatery *-down- storeImages
+    Eatery *-down- businessHours
+    Eatery *-down- genre
+    Eatery *-down- RegularHoliday
+    Eatery *-down- createdAt
+    Eatery *-down- updatedAt
+
+    EateryList *-down- eateryListId
+    EateryList *-down- listType
+    EateryList *-down- eateryId
+
+}
+
+@enduml

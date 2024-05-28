@@ -1,0 +1,43 @@
+@startuml UserAggregation
+
+title UserAggregation
+
+package "UserAggregation" {
+    ' 1. エンティティの定義
+    class User << (R,red) RootEntity >> {
+        userId
+        userName
+        password
+        createdAt
+        updatedAt
+    }
+
+    class userId {
+        + value: string
+    }
+
+    class userName {
+        + value: string
+    }
+
+    class password {
+        + value: string
+    }
+
+    class createdAt {
+        + value: time
+    }
+
+    class updatedAt {
+        + value: time
+    }
+
+    User *-down- userId
+    User *-down- userName
+    User *-down- password
+    User *-down- createdAt
+    User *-down- updatedAt
+
+}
+
+@enduml
