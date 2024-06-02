@@ -53,4 +53,49 @@ export default class Eatery {
             eateryImages,
         );
     }
+
+    // TODO : decorator which is experimental stage is not used now.
+    get eateryId(): EateryId {
+        return this._eateryId;
+    }
+
+    get eateryName(): EateryName {
+        return this._eateryName;
+    }
+
+    get eateryCategory(): EateryCategory {
+        return this._eateryCategory;
+    }
+
+    get eateryDescription(): EateryDescription {
+        return this._eateryDescription;
+    }
+
+    get eateryRating(): EateryRating {
+        return this._eateryRating;
+    }
+
+    get eateryAddress(): EateryAdress {
+        return this._eateryAddress;
+    }
+
+    get eateryLocation(): EateryLocation {
+        return this._eateryLocation;
+    }
+
+    get eateryContry(): EateryCountry {
+        return this._eateryContry;
+    }
+
+    get eateryBusinessHours(): EateryBusinessHours {
+        return this._eateryBusinessHours;
+    }
+
+    get eateryRegularHolidays(): EateryRegularHolidays {
+        return this._eateryRegularHolidays;
+    }
+
+    get eateryImages(): EateryImages {
+        return this._eateryImages;
+    }
 }

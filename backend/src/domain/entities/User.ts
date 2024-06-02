@@ -27,6 +27,7 @@ export default class User {
         console.log(this);
     }
 
+    // TODO : decorator which is experimental stage is not used now.
     get userId(): UserId {
         return this._userId;
     }
