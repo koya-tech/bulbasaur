@@ -2,11 +2,11 @@ import EateryInfoProps from './type';
 
 function EateryInfo(eatryInfoProps: EateryInfoProps) {
     const {
-        storeDescription,
-        storeAdress,
-        storeScore,
-        businessHours,
-        RegularHoliday,
+        eateryDescription,
+        eateryAdress,
+        eateryRating,
+        eateryBusinessHours,
+        eateryRegularHolidays,
         updatedAt,
     } = eatryInfoProps;
     return (
@@ -16,7 +16,7 @@ function EateryInfo(eatryInfoProps: EateryInfoProps) {
                     Adress
                 </p>
                 <p>
-                    {storeAdress}
+                    {eateryAdress}
                 </p>
             </div>
             <div>
@@ -24,24 +24,24 @@ function EateryInfo(eatryInfoProps: EateryInfoProps) {
                     Description
                 </p>
                 <p>
-                    {storeDescription}
+                    {eateryDescription}
                 </p>
             </div>
             <div>
                 <p className="text-xl">
-                    businessHours
+                    eateryBusinessHours
                 </p>
                 <p>
-                    {businessHours.start}
-                    {businessHours.end}
+                    {eateryBusinessHours.start}
+                    {eateryBusinessHours.end}
                 </p>
             </div>
             <div>
                 <p className="text-xl">
-                    RegularHoliday
+                    eateryRegularHolidays
                 </p>
                 <p>
-                    {RegularHoliday}
+                    {eateryRegularHolidays}
                 </p>
             </div>
             <div>
@@ -49,7 +49,7 @@ function EateryInfo(eatryInfoProps: EateryInfoProps) {
                     Score
                 </p>
                 <p>
-                    {storeScore}
+                    {eateryRating}
                 </p>
             </div>
             <div>

@@ -1,6 +1,6 @@
 import ValueObject from '../AbstractValueObject';
 
-export default class UserName extends ValueObject<string, 'UserId'> {
+export default class UserName extends ValueObject<string, 'UserName'> {
     static readonly MAX = 1000;
 
     static readonly MIN = 1;

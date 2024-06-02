@@ -11,30 +11,30 @@ import {
 
 function EateryCard(eateryCardProps: EateryCardProps) {
     const {
-        storeName,
-        storeDescription,
-        storeScore,
-        storeAdress,
-        storeImage,
+        eateryName,
+        eateryDescription,
+        eateryRating,
+        eateryAdress,
+        eateryImage,
     } = eateryCardProps;
     return (
         <div className="p-1">
             <Link to="/">
                 <Card className="flex">
                     <div className="basis-2/5">
-                        <img className="rounded-lg h-full object-cover" src={storeImage} alt={storeName} />
+                        <img className="rounded-lg h-full object-cover" src={eateryImage} alt={eateryName} />
                     </div>
                     <div className="basis-3/5">
                         <CardHeader>
-                            <CardTitle className="text-3xl">{storeName}</CardTitle>
-                            <CardDescription className="line-clamp-2">{storeDescription}</CardDescription>
+                            <CardTitle className="text-3xl">{eateryName}</CardTitle>
+                            <CardDescription className="line-clamp-2">{eateryDescription}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <p>{storeAdress}</p>
+                            <p>{eateryAdress}</p>
                         </CardContent>
                         <CardFooter className="flex gap-3">
                             <p>Score</p>
-                            <p>{storeScore}</p>
+                            <p>{eateryRating}</p>
                         </CardFooter>
                     </div>
                 </Card>

@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import UserPassword from './userPassword';
+import UserPassword from './UserPassword';
 
 describe('UserPassword', () => {
     const saltRounds = 10;

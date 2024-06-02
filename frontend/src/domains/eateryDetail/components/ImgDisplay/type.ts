@@ -1,5 +1,5 @@
 type ImgDisplayProps = {
-    storeImages:
+    eateryImages:
     {
         index: number,
         imgUrl: string

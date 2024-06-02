@@ -1,13 +1,13 @@
 type EateryInfoProps = {
-    storeDescription: string,
-    storeScore: number,
-    conuntry: string,
-    storeAdress: string,
-    businessHours: {
+    eateryDescription: string,
+    eateryRating: number,
+    eateryCountry: string,
+    eateryAdress: string,
+    eateryBusinessHours: {
         start: string,
         end: string,
     },
-    RegularHoliday: string,
+    eateryRegularHolidays: string,
     createdAt: string,
     updatedAt: string,
 };

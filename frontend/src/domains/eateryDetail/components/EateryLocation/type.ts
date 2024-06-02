@@ -1,5 +1,5 @@
 type EateryLocationProps = {
-    location: {
+    eateryAdress: {
         latitude: number,
         longitude: number,
     },

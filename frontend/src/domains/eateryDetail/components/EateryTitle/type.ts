@@ -1,6 +1,6 @@
 type EateryInfoProps = {
-    storeName: string,
-    genre: string,
+    eateryName: string,
+    eateryCategory: string,
 };
 
 export default EateryInfoProps;

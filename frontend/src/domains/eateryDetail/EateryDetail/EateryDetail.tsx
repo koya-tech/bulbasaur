@@ -11,22 +11,22 @@ function EateryDetail() {
     return (
         <div>
             <EateryTitle
-                storeName={data.storeName}
-                genre={data.genre}
+                eateryName={data.eateryName}
+                eateryCategory={data.eateryCategory}
             />
-            <ImgDisplay storeImages={data.storeImages} />
+            <ImgDisplay eateryImages={data.eateryImages} />
             <EateryInfo
-                storeDescription={data.storeDescription}
-                storeScore={data.storeScore}
-                conuntry={data.conuntry}
-                storeAdress={data.storeAdress}
-                businessHours={data.businessHours}
-                RegularHoliday={data.RegularHoliday}
+                eateryDescription={data.eateryDescription}
+                eateryRating={data.eateryRating}
+                eateryCountry={data.eateryCountry}
+                eateryAdress={data.eateryAdress}
+                eateryBusinessHours={data.eateryBusinessHours}
+                eateryRegularHolidays={data.eateryRegularHolidays}
                 createdAt={data.createdAt}
                 updatedAt={data.updatedAt}
             />
             <EateryReviews />
-            <EasteryLocation location={data.location} />
+            <EasteryLocation eateryAdress={data.location} />
         </div>
     );
 }

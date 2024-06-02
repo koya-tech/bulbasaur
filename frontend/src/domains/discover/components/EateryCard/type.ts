@@ -1,9 +1,9 @@
 type EateryCardProps = {
-    storeName: string;
-    storeDescription: string;
-    storeAdress: string;
-    storeImage: string;
-    storeScore: number;
+    eateryName: string;
+    eateryDescription: string;
+    eateryAdress: string;
+    eateryImage: string;
+    eateryRating: number;
 };
 
 export default EateryCardProps;
