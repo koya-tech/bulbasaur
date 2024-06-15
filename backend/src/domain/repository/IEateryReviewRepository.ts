@@ -1,7 +1,7 @@
 import EateryReview from '../entities/EateryReview';
 import EateryReviewId from '../valueObject/eateryReview/EateryReviewId';
 
-export interface IEateryRepository {
+export interface IEateryReviewRepository {
 
     save(eatety: EateryReview): Promise<void>;
 

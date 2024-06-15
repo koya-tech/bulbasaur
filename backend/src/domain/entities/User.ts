@@ -22,11 +22,6 @@ export default class User {
         return new User(userId, name, password, imgUrl);
     }
 
-    public delete() {
-        // TODO:delete function
-        console.log(this);
-    }
-
     // TODO : decorator which is experimental stage is not used now.
     get userId(): UserId {
         return this._userId;
