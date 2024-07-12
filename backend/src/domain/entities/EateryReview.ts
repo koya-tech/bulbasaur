@@ -1,4 +1,3 @@
-import { createId } from '@paralleldrive/cuid2';
 import EateryId from '../valueObject/eatery/EateryId';
 import EateryReviewComment from '../valueObject/eateryReview/EateryReviewComment';
 import EateryReviewId from '../valueObject/eateryReview/EateryReviewId';
@@ -15,12 +14,12 @@ export default class EateryReview {
     ) { }
 
     static create(
+        eateryReviewId: EateryReviewId,
         eateryReviewComment: EateryReviewComment,
         eateryReviewRating: EateryReviewRating,
         eateryId: EateryId,
         userId: UserId,
     ) {
-        const eateryReviewId = new EateryReviewId(createId());
         return new EateryReview(
             eateryReviewId,
             eateryReviewComment,

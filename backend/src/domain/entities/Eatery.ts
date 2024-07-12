@@ -1,4 +1,3 @@
-import { createId } from '@paralleldrive/cuid2';
 import EateryAdress from '../valueObject/eatery/EateryAdress';
 import EateryBusinessHours from '../valueObject/eatery/EateryBusinessHours';
 import EateryCategory from '../valueObject/eatery/EateryCategory';
@@ -27,6 +26,7 @@ export default class Eatery {
     ) { }
 
     static create(
+        eateryId: EateryId,
         eateryName: EateryName,
         eateryCategory: EateryCategory,
         eateryDescription: EateryDescription,
@@ -38,7 +38,6 @@ export default class Eatery {
         eateryRegularHolidays: EateryRegularHolidays,
         eateryImages: EateryImages,
     ) {
-        const eateryId = new EateryId(createId());
         return new Eatery(
             eateryId,
             eateryName,
@@ -83,7 +82,6 @@ export default class Eatery {
         );
     }
 
-    // TODO : decorator which is experimental stage is not used now.
     get eateryId(): EateryId {
         return this._eateryId;
     }

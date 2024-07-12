@@ -1,4 +1,3 @@
-import { createId } from '@paralleldrive/cuid2';
 import UserName from '../valueObject/user/UserName';
 import UserId from '../valueObject/user/UserId';
 import UserPassword from '../valueObject/user/UserPassword';
@@ -13,13 +12,12 @@ export default class User {
     ) { }
 
     static create(
-        name: UserName,
-        password: UserPassword,
-        imgUrl: UserImage,
+        userId: UserId,
+        userName: UserName,
+        userPassword: UserPassword,
+        userImage: UserImage,
     ) {
-        // TODO:check where do numbering
-        const userId = new UserId(createId());
-        return new User(userId, name, password, imgUrl);
+        return new User(userId, userName, userPassword, userImage);
     }
 
     static reconstruct(
@@ -31,7 +29,6 @@ export default class User {
         return new User(userId, userName, userPassword, userImage);
     }
 
-    // TODO : decorator which is experimental stage is not used now.
     get userId(): UserId {
         return this._userId;
     }

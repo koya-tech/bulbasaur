@@ -1,10 +1,12 @@
 import bcrypt from 'bcrypt';
+import mongoose from 'mongoose';
 import InMemoryUserRepository from '../../infrastructure/shared/InMemoryUserRepository';
 import UserImage from '../valueObject/user/UserImage';
 import UserName from '../valueObject/user/UserName';
 import UserPassword from '../valueObject/user/UserPassword';
 import UserDomainService from './UserDomainService';
 import User from '../entities/User';
+import UserId from '../valueObject/user/UserId';
 
 describe('UserDomainService test', () => {
     let inMemoryUserRepository: InMemoryUserRepository;
@@ -16,6 +18,7 @@ describe('UserDomainService test', () => {
     const sampleSalt = bcrypt.genSaltSync(sampleSaltRounds);
     const sampleHashedPassword = bcrypt.hashSync(samplePassword, sampleSalt);
     const sampleUser = User.create(
+        new UserId(new mongoose.Types.ObjectId()),
         new UserName('sample'),
         new UserPassword(sampleHashedPassword),
         new UserImage('sample.jpg'),
@@ -29,6 +32,7 @@ describe('UserDomainService test', () => {
         const beforeEachSalt = bcrypt.genSaltSync(beforeEachSaltRounds);
         const beforeEachHashedPassword = bcrypt.hashSync(beforeEachPassword, beforeEachSalt);
         beforeEachUser = User.create(
+            new UserId(new mongoose.Types.ObjectId()),
             new UserName('beforeEach'),
             new UserPassword(beforeEachHashedPassword),
             new UserImage('beforeEach.jpg'),

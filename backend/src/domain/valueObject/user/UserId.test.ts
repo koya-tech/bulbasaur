@@ -1,26 +1,21 @@
-import { createId } from '@paralleldrive/cuid2';
+import mongoose from 'mongoose';
 import UserId from './UserId';
 
 describe('UserId', () => {
-    const cuid1 = createId();
-    const cuid2 = createId();
+    const objectId1 = new mongoose.Types.ObjectId();
+    const objectId2 = new mongoose.Types.ObjectId();
 
     // * Normal
     test('Normal test', () => {
-        expect(new UserId(cuid1).value).toBe(cuid1);
-        expect(new UserId(cuid2).value).toBe(cuid2);
+        expect(new UserId(objectId1).value).toBe(objectId1);
+        expect(new UserId(objectId2).value).toBe(objectId2);
     });
 
     test('Equals test of userid', () => {
-        const UserId1 = new UserId(cuid1);
-        const UserId2 = new UserId(cuid1);
-        const UserId3 = new UserId(cuid2);
+        const UserId1 = new UserId(objectId1);
+        const UserId2 = new UserId(objectId1);
+        const UserId3 = new UserId(objectId2);
         expect(UserId1.equals(UserId2)).toBeTruthy();
         expect(UserId1.equals(UserId3)).toBeFalsy();
-    });
-
-    // * Abnormal
-    test('Abnormal test. Throw Error when abnormal userid.', () => {
-        expect(() => new UserId('not a cuid')).toThrow('This userId is not cuid.');
     });
 });

@@ -1,4 +1,4 @@
-import { createId } from '@paralleldrive/cuid2';
+import mongoose from 'mongoose';
 import InMemoryEateryReviewRepository from '../../infrastructure/shared/InMemoryEateryReviewRepository';
 import EateryReview from '../entities/EateryReview';
 import EateryId from '../valueObject/eatery/EateryId';
@@ -6,6 +6,7 @@ import EateryReviewComment from '../valueObject/eateryReview/EateryReviewComment
 import EateryReviewRating from '../valueObject/eateryReview/EateryReviewRating';
 import UserId from '../valueObject/user/UserId';
 import EateryReviewDomainService from './EateryReviewDomainService';
+import EateryReviewId from '../valueObject/eateryReview/EateryReviewId';
 
 describe('EateryReviewDomainService', () => {
     let inMemoryEateryReviewRepository: InMemoryEateryReviewRepository;
@@ -13,20 +14,22 @@ describe('EateryReviewDomainService', () => {
     let beforeEachEateryReview: EateryReview;
 
     const sampleEateryReview = EateryReview.create(
+        new EateryReviewId(new mongoose.Types.ObjectId()),
         new EateryReviewComment('sampleComment'),
         new EateryReviewRating(3),
-        new EateryId(createId()),
-        new UserId(createId()),
+        new EateryId(new mongoose.Types.ObjectId()),
+        new UserId(new mongoose.Types.ObjectId()),
     );
 
     beforeEach(async () => {
         inMemoryEateryReviewRepository = new InMemoryEateryReviewRepository();
         eateryReviewDomainService = new EateryReviewDomainService(inMemoryEateryReviewRepository);
         beforeEachEateryReview = EateryReview.create(
+            new EateryReviewId(new mongoose.Types.ObjectId()),
             new EateryReviewComment('EateryReviewComment'),
             new EateryReviewRating(3),
-            new EateryId(createId()),
-            new UserId(createId()),
+            new EateryId(new mongoose.Types.ObjectId()),
+            new UserId(new mongoose.Types.ObjectId()),
         );
         await inMemoryEateryReviewRepository.save(beforeEachEateryReview);
     });

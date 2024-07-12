@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import InMemoryEateryRepository from '../../infrastructure/shared/InMemoryEateryRepository';
 import Eatery from '../entities/Eatery';
 import EateryAdress from '../valueObject/eatery/EateryAdress';
@@ -11,12 +12,14 @@ import EateryName from '../valueObject/eatery/EateryName';
 import EateryRating from '../valueObject/eatery/EateryRating';
 import EateryRegularHolidays from '../valueObject/eatery/EateryRegularHolidays';
 import EateryDomainService from './EateryDomainService';
+import EateryId from '../valueObject/eatery/EateryId';
 
 describe('EateryDomainService', () => {
     let eateryDomainService: EateryDomainService;
     let inMemoryEateryRepository: InMemoryEateryRepository;
     let beforeEachEatery: Eatery;
 
+    const sampleEateryId = new EateryId(new mongoose.Types.ObjectId());
     const sampleEateryName = new EateryName('subTest Eatery');
     const sampleEateryCategory = new EateryCategory('Western');
     const sampleEateryDescription = new EateryDescription('Description');
@@ -28,6 +31,7 @@ describe('EateryDomainService', () => {
     const sampleEateryRegularHolidays = new EateryRegularHolidays(['sunday']);
     const sampleEateryImages = new EateryImages(['image1.jpg', 'image2.jpg']);
     const sampleEatery = Eatery.create(
+        sampleEateryId,
         sampleEateryName,
         sampleEateryCategory,
         sampleEateryDescription,
@@ -43,6 +47,7 @@ describe('EateryDomainService', () => {
     beforeEach(async () => {
         inMemoryEateryRepository = new InMemoryEateryRepository();
         eateryDomainService = new EateryDomainService(inMemoryEateryRepository);
+        const beforeEachEateryId = new EateryId(new mongoose.Types.ObjectId());
         const beforeEachEateryName = new EateryName('Test Eatery');
         const beforeEachEateryCategory = new EateryCategory('Western');
         const beforeEachEateryDescription = new EateryDescription('Description');
@@ -54,6 +59,7 @@ describe('EateryDomainService', () => {
         const beforeEachEateryRegularHolidays = new EateryRegularHolidays(['sunday']);
         const beforeEachEateryImages = new EateryImages(['image1.jpg', 'image2.jpg']);
         beforeEachEatery = Eatery.create(
+            beforeEachEateryId,
             beforeEachEateryName,
             beforeEachEateryCategory,
             beforeEachEateryDescription,

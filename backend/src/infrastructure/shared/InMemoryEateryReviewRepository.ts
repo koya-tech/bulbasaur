@@ -8,20 +8,21 @@ export default class InMemoryEateryReviewRepository implements IEateryReviewRepo
     } = {};
 
     async save(eateryReview: EateryReview) {
-        this.DB[eateryReview.eateryReviewId.value] = eateryReview;
+        this.DB[eateryReview.eateryReviewId.value.toString()] = eateryReview;
     }
 
     async update(eateryReview: EateryReview) {
-        this.DB[eateryReview.eateryReviewId.value] = eateryReview;
+        this.DB[eateryReview.eateryReviewId.value.toString()] = eateryReview;
     }
 
     async delete(eateryReviewId: EateryReviewId) {
-        delete this.DB[eateryReviewId.value];
+        delete this.DB[eateryReviewId.value.toString()];
     }
 
     async find(eateryReview: EateryReview): Promise<EateryReview | null> {
         const targetEateryReview = Object.entries(this.DB)
-            .find(([id]) => eateryReview.eateryReviewId.value === this.DB[id].eateryReviewId.value);
+            .find(([id]) => eateryReview.eateryReviewId.value.toString() === this
+                .DB[id].eateryReviewId.value.toString());
 
         return targetEateryReview ? targetEateryReview[1] : null;
     }

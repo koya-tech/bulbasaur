@@ -8,20 +8,20 @@ export default class InMemoryUserRepository implements IUserRepository {
     } = {};
 
     async save(user: User) {
-        this.DB[user.userId.value] = user;
+        this.DB[user.userId.value.toString()] = user;
     }
 
     async update(user: User) {
-        this.DB[user.userId.value] = user;
+        this.DB[user.userId.value.toString()] = user;
     }
 
     async delete(userId: UserId) {
-        delete this.DB[userId.value];
+        delete this.DB[userId.value.toString()];
     }
 
     async find(user: User): Promise<User | null> {
         const targetUser = Object.entries(this.DB)
-            .find(([id]) => user.userId.value === this.DB[id].userId.value);
+            .find(([id]) => user.userId.value.toString() === id);
 
         return targetUser ? targetUser[1] : null;
     }

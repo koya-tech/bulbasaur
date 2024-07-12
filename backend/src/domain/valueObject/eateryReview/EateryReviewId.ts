@@ -1,15 +1,15 @@
 /* eslint-disable class-methods-use-this */
-import { isCuid } from '@paralleldrive/cuid2';
+import mongoose from 'mongoose';
 import ValueObject from '../AbstractValueObject';
 
-export default class EateryReviewId extends ValueObject<string, 'EateryReviewId'> {
-    constructor(value: string) {
+export default class EateryReviewId extends ValueObject<mongoose.Types.ObjectId, 'EateryReviewId'> {
+    constructor(value: mongoose.Types.ObjectId) {
         super(value);
     }
 
-    protected validate(value: string): void {
-        if (!isCuid(value)) {
-            throw new Error('This EateryReviewId is not cuid.');
+    protected validate(value: mongoose.Types.ObjectId): void {
+        if (!mongoose.Types.ObjectId.isValid(value)) {
+            throw new Error('This ObjectId is not valid');
         }
     }
 }
