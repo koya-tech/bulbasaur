@@ -1,6 +1,5 @@
 import EateryReview from '../entities/EateryReview';
 import { IEateryReviewRepository } from '../repository/IEateryReviewRepository';
-import EateryReviewId from '../valueObject/eateryReview/EateryReviewId';
 
 export default class EateryReviewDomainService {
     constructor(
@@ -12,19 +11,19 @@ export default class EateryReviewDomainService {
         return eateryReview;
     }
 
-    async deleteEatery(eateryReviewId: EateryReviewId): Promise<void> {
-        const targetEateryReview = await this.eateryReviewRepository.find(eateryReviewId);
+    async deleteEatery(eateryReview: EateryReview): Promise<void> {
+        const targetEateryReview = await this.eateryReviewRepository.find(eateryReview);
         if (!targetEateryReview?.eateryId) {
             throw new Error('Reviewd Eatery not found.');
         }
         await this.eateryReviewRepository.delete(targetEateryReview.eateryReviewId);
     }
 
-    async updateEatery(eateryReviewId: EateryReviewId): Promise<void> {
-        const targetEateryReview = await this.eateryReviewRepository.find(eateryReviewId);
+    async updateEatery(eateryReview: EateryReview): Promise<void> {
+        const targetEateryReview = await this.eateryReviewRepository.find(eateryReview);
         if (!targetEateryReview) {
             throw new Error('Eatery Review not found.');
         }
-        await this.eateryReviewRepository.update(targetEateryReview);
+        await this.eateryReviewRepository.update(eateryReview);
     }
 }

@@ -54,6 +54,35 @@ export default class Eatery {
         );
     }
 
+    // For Test
+    static reconstuct(
+        eateryId: EateryId,
+        eateryName: EateryName,
+        eateryCategory: EateryCategory,
+        eateryDescription: EateryDescription,
+        eateryRating: EateryRating,
+        eateryAddress: EateryAdress,
+        eateryLocation: EateryLocation,
+        eateryContry: EateryCountry,
+        eateryBusinessHours: EateryBusinessHours,
+        eateryRegularHolidays: EateryRegularHolidays,
+        eateryImages: EateryImages,
+    ) {
+        return new Eatery(
+            eateryId,
+            eateryName,
+            eateryCategory,
+            eateryDescription,
+            eateryRating,
+            eateryAddress,
+            eateryLocation,
+            eateryContry,
+            eateryBusinessHours,
+            eateryRegularHolidays,
+            eateryImages,
+        );
+    }
+
     // TODO : decorator which is experimental stage is not used now.
     get eateryId(): EateryId {
         return this._eateryId;

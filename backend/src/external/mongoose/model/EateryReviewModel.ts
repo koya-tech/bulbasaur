@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const eateryReviewSchema = new Schema({
-    eateryReviewId: String,
+    _id: String,
     eateryReviewComment: String,
     eateryReviewRating: String,
     userRef: { type: Schema.Types.ObjectId, ref: 'User' },

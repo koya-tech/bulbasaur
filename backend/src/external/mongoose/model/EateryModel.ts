@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const eaterySchema = new Schema({
+    _id: { type: String, required: true },
     eateryName: { type: String, required: true },
     eateryCategory: { type: String, required: true },
     eateryDescription: { type: String, required: true },

@@ -3,11 +3,11 @@ import EateryReviewId from '../valueObject/eateryReview/EateryReviewId';
 
 export interface IEateryReviewRepository {
 
-    save(eatety: EateryReview): Promise<void>;
+    save(eatery: EateryReview): Promise<void>;
 
-    update(eatety: EateryReview): Promise<void>;
+    update(eatery: EateryReview): Promise<void>;
 
-    delete(eatetyId: EateryReviewId): Promise<void>;
+    delete(eateryId: EateryReviewId): Promise<void>;
 
-    find(eatetyId: EateryReviewId): Promise<EateryReview | null>;
+    find(eateryId: EateryReview): Promise<EateryReview | null>;
 }

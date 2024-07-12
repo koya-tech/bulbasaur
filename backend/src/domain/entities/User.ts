@@ -22,6 +22,15 @@ export default class User {
         return new User(userId, name, password, imgUrl);
     }
 
+    static reconstruct(
+        userId: UserId,
+        userName: UserName,
+        userPassword: UserPassword,
+        userImage: UserImage,
+    ) {
+        return new User(userId, userName, userPassword, userImage);
+    }
+
     // TODO : decorator which is experimental stage is not used now.
     get userId(): UserId {
         return this._userId;

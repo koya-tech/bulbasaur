@@ -30,6 +30,22 @@ export default class EateryReview {
         );
     }
 
+    static reconstruct(
+        eateryReviewId: EateryReviewId,
+        eateryReviewComment: EateryReviewComment,
+        eateryReviewRating: EateryReviewRating,
+        eateryId: EateryId,
+        userId: UserId,
+    ) {
+        return new EateryReview(
+            eateryReviewId,
+            eateryReviewComment,
+            eateryReviewRating,
+            eateryId,
+            userId,
+        );
+    }
+
     get eateryReviewId(): EateryReviewId {
         return this._eateryReviewId;
     }

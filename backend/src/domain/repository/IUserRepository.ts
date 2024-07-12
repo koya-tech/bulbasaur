@@ -1,5 +1,5 @@
 import User from '../entities/User';
-import UserName from '../valueObject/user/UserName';
+import UserId from '../valueObject/user/UserId';
 
 export interface IUserRepository {
 
@@ -7,7 +7,7 @@ export interface IUserRepository {
 
     update(user: User): Promise<void>;
 
-    delete(userName: UserName): Promise<void>;
+    delete(userId: UserId): Promise<void>;
 
-    find(userName: UserName): Promise<User | null>;
+    find(user: User): Promise<User | null>;
 }

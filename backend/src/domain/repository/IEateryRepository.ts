@@ -1,13 +1,13 @@
 import Eatery from '../entities/Eatery';
-import EateryName from '../valueObject/eatery/EateryName';
+import EateryId from '../valueObject/eatery/EateryId';
 
 export interface IEateryRepository {
 
-    save(eatety: Eatery): Promise<void>;
+    save(eatery: Eatery): Promise<void>;
 
-    update(eatety: Eatery): Promise<void>;
+    update(eatery: Eatery): Promise<void>;
 
-    delete(eatetyName: EateryName): Promise<void>;
+    delete(eateryId: EateryId): Promise<void>;
 
-    find(eatetyName: EateryName): Promise<Eatery | null>;
+    find(eatery: Eatery): Promise<Eatery | null>;
 }
