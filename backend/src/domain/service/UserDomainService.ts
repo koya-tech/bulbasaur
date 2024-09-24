@@ -7,7 +7,7 @@ export default class UserDomainService {
     ) { }
 
     async IsUserNameDuplicateCheck(user: User) {
-        const duplicateUserName = await this.userRepository.find(user);
+        const duplicateUserName = await this.userRepository.findById(user.userId);
         const isDuplicateUserName = !!duplicateUserName;
         return isDuplicateUserName;
     }
@@ -20,15 +20,15 @@ export default class UserDomainService {
     }
 
     async deleteUser(user: User): Promise<void> {
-        const targetUser = await this.userRepository.find(user);
+        const targetUser = await this.userRepository.findById(user.userId);
         if (!targetUser) {
             throw new Error('User not found.');
         }
-        await this.userRepository.delete(targetUser.userId);
+        await this.userRepository.deleteById(targetUser.userId);
     }
 
     async updateUser(user: User): Promise<void> {
-        const targetUser = await this.userRepository.find(user);
+        const targetUser = await this.userRepository.findById(user.userId);
         if (!targetUser) {
             throw new Error('User not found.');
         }

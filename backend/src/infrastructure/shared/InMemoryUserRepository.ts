@@ -15,13 +15,13 @@ export default class InMemoryUserRepository implements IUserRepository {
         this.DB[user.userId.value.toString()] = user;
     }
 
-    async delete(userId: UserId) {
+    async deleteById(userId: UserId) {
         delete this.DB[userId.value.toString()];
     }
 
-    async find(user: User): Promise<User | null> {
+    async findById(userId: UserId): Promise<User | null> {
         const targetUser = Object.entries(this.DB)
-            .find(([id]) => user.userId.value.toString() === id);
+            .find(([id]) => userId.value.toString() === id);
 
         return targetUser ? targetUser[1] : null;
     }

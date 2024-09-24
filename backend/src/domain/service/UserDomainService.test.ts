@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-import mongoose from 'mongoose';
 import InMemoryUserRepository from '../../infrastructure/shared/InMemoryUserRepository';
 import UserImage from '../valueObject/user/UserImage';
 import UserName from '../valueObject/user/UserName';
@@ -18,7 +17,7 @@ describe('UserDomainService test', () => {
     const sampleSalt = bcrypt.genSaltSync(sampleSaltRounds);
     const sampleHashedPassword = bcrypt.hashSync(samplePassword, sampleSalt);
     const sampleUser = User.create(
-        new UserId(new mongoose.Types.ObjectId()),
+        new UserId('sample'),
         new UserName('sample'),
         new UserPassword(sampleHashedPassword),
         new UserImage('sample.jpg'),
@@ -32,7 +31,7 @@ describe('UserDomainService test', () => {
         const beforeEachSalt = bcrypt.genSaltSync(beforeEachSaltRounds);
         const beforeEachHashedPassword = bcrypt.hashSync(beforeEachPassword, beforeEachSalt);
         beforeEachUser = User.create(
-            new UserId(new mongoose.Types.ObjectId()),
+            new UserId('beforeEach'),
             new UserName('beforeEach'),
             new UserPassword(beforeEachHashedPassword),
             new UserImage('beforeEach.jpg'),
@@ -52,13 +51,13 @@ describe('UserDomainService test', () => {
 
     test('deleteUser function test', async () => {
         await userDomainService.deleteUser(beforeEachUser);
-        const target = await inMemoryUserRepository.find(beforeEachUser);
+        const target = await inMemoryUserRepository.findById(beforeEachUser.userId);
         expect(target).toBeNull();
     });
 
     test('registerUser function test', async () => {
         await userDomainService.registerUser(sampleUser);
-        const target = await inMemoryUserRepository.find(sampleUser);
+        const target = await inMemoryUserRepository.findById(sampleUser.userId);
         expect(target).toBe(sampleUser);
     });
 
@@ -71,7 +70,7 @@ describe('UserDomainService test', () => {
     });
 
     test('update function test', async () => {
-        const willUpdateUser = await inMemoryUserRepository.find(beforeEachUser);
+        const willUpdateUser = await inMemoryUserRepository.findById(beforeEachUser.userId);
         if (willUpdateUser == null) {
             throw new Error('User not found.');
         }
@@ -79,10 +78,10 @@ describe('UserDomainService test', () => {
             willUpdateUser?.userId,
             new UserName('updatedUser'),
             willUpdateUser?.userPassword,
-            willUpdateUser?.userImg,
+            willUpdateUser?.userImage,
         );
         await userDomainService.updateUser(updatedUser);
-        const updatedUserInDB = await inMemoryUserRepository.find(updatedUser);
+        const updatedUserInDB = await inMemoryUserRepository.findById(updatedUser.userId);
         expect(updatedUserInDB).toBe(updatedUser);
     });
 });
