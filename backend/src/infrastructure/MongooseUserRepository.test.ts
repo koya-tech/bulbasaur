@@ -26,24 +26,24 @@ describe('MongooseUserRepository', () => {
 
     const repository = new MongooseUserRepository();
 
+    const saltRounds = 10;
+    const myPlaintextPassword = 's0/\\/\\P4$$w0rD';
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashedPassword = bcrypt.hashSync(myPlaintextPassword, salt);
+
+    const userId = new UserId('abcefghijk');
+    const userName = new UserName('testtest');
+    const userPassword = new UserPassword(hashedPassword);
+    const userImage = new UserImage('test.jpg');
+
+    const user = User.create(
+        userId,
+        userName,
+        userPassword,
+        userImage,
+    );
+
     test('can get info which repo did save', async () => {
-        const saltRounds = 10;
-        const myPlaintextPassword = 's0/\\/\\P4$$w0rD';
-        const salt = bcrypt.genSaltSync(saltRounds);
-        const hashedPassword = bcrypt.hashSync(myPlaintextPassword, salt);
-
-        const userId = new UserId('abcefghijk');
-        const userName = new UserName('testtest');
-        const userPassword = new UserPassword(hashedPassword);
-        const userImage = new UserImage('test.jpg');
-
-        const user = User.create(
-            userId,
-            userName,
-            userPassword,
-            userImage,
-        );
-
         await repository.save(user);
 
         const userList = await repository.read();
@@ -58,17 +58,6 @@ describe('MongooseUserRepository', () => {
     });
 
     test('can update about user info', async () => {
-        const saltRounds = 10;
-        const myPlaintextPassword = 's0/\\/\\P4$$w0rD';
-        const salt = bcrypt.genSaltSync(saltRounds);
-        const hashedPassword = bcrypt.hashSync(myPlaintextPassword, salt);
-        const userId = new UserId('abcefghijk');
-        const user = User.create(
-            userId,
-            new UserName('testtest'),
-            new UserPassword(hashedPassword),
-            new UserImage('test.jpg'),
-        );
         await repository.save(user);
 
         const userList = await repository.read();
@@ -96,5 +85,17 @@ describe('MongooseUserRepository', () => {
         expect(createdEntity?.userName.equals(updatedUserName)).toBeTruthy();
         expect(createdEntity?.userPassword.equals(updatedUserPassword)).toBeTruthy();
         expect(createdEntity?.userImage.equals(updatedUserImage)).toBeTruthy();
+    });
+
+    test('can delete user info', async () => {
+        await repository.save(user);
+
+        const userList = await repository.read();
+        if (userList === null) {
+            throw new Error('failed to read UserInfo');
+        }
+        await repository.deleteById(userList[0].userId);
+        const userListAfterDelete = await repository.read();
+        expect(userListAfterDelete).toBeNull();
     });
 });

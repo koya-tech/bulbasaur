@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import dotenv from 'dotenv';
 import express from 'express';
 import UserImage from './domain/valueObject/user/UserImage';
 import UserName from './domain/valueObject/user/UserName';
@@ -9,6 +11,8 @@ import MongooseUserRepository from './infrastructure/MongooseUserRepository';
 import UserId from './domain/valueObject/user/UserId';
 import User from './domain/entities/User';
 // import User, { IUserDocument } from './domain/entities/User';
+
+dotenv.config({ path: '.env.local' });
 
 const app = express();
 const port = 3001;
