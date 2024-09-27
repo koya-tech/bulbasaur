@@ -1,4 +1,4 @@
-import EateryAdress from '../valueObject/eatery/EateryAdress';
+import EateryAddress from '../valueObject/eatery/EateryAddress';
 import EateryBusinessHours from '../valueObject/eatery/EateryBusinessHours';
 import EateryCategory from '../valueObject/eatery/EateryCategory';
 import EateryCountry from '../valueObject/eatery/EateryCountry';
@@ -17,9 +17,9 @@ export default class Eatery {
         private _eateryCategory: EateryCategory,
         private _eateryDescription: EateryDescription,
         private _eateryRating: EateryRating,
-        private _eateryAddress: EateryAdress,
+        private _eateryAddress: EateryAddress,
         private _eateryLocation: EateryLocation,
-        private _eateryContry: EateryCountry,
+        private _eateryCountry: EateryCountry,
         private _eateryBusinessHours: EateryBusinessHours,
         private _eateryRegularHolidays: EateryRegularHolidays,
         private _eateryImages: EateryImages,
@@ -31,9 +31,9 @@ export default class Eatery {
         eateryCategory: EateryCategory,
         eateryDescription: EateryDescription,
         eateryRating: EateryRating,
-        eateryAddress: EateryAdress,
+        eateryAddress: EateryAddress,
         eateryLocation: EateryLocation,
-        eateryContry: EateryCountry,
+        eateryCountry: EateryCountry,
         eateryBusinessHours: EateryBusinessHours,
         eateryRegularHolidays: EateryRegularHolidays,
         eateryImages: EateryImages,
@@ -46,23 +46,22 @@ export default class Eatery {
             eateryRating,
             eateryAddress,
             eateryLocation,
-            eateryContry,
+            eateryCountry,
             eateryBusinessHours,
             eateryRegularHolidays,
             eateryImages,
         );
     }
 
-    // For Test
-    static reconstuct(
+    static reconstruct(
         eateryId: EateryId,
         eateryName: EateryName,
         eateryCategory: EateryCategory,
         eateryDescription: EateryDescription,
         eateryRating: EateryRating,
-        eateryAddress: EateryAdress,
+        eateryAddress: EateryAddress,
         eateryLocation: EateryLocation,
-        eateryContry: EateryCountry,
+        eateryCountry: EateryCountry,
         eateryBusinessHours: EateryBusinessHours,
         eateryRegularHolidays: EateryRegularHolidays,
         eateryImages: EateryImages,
@@ -75,7 +74,7 @@ export default class Eatery {
             eateryRating,
             eateryAddress,
             eateryLocation,
-            eateryContry,
+            eateryCountry,
             eateryBusinessHours,
             eateryRegularHolidays,
             eateryImages,
@@ -102,7 +101,7 @@ export default class Eatery {
         return this._eateryRating;
     }
 
-    get eateryAddress(): EateryAdress {
+    get eateryAddress(): EateryAddress {
         return this._eateryAddress;
     }
 
@@ -110,8 +109,8 @@ export default class Eatery {
         return this._eateryLocation;
     }
 
-    get eateryContry(): EateryCountry {
-        return this._eateryContry;
+    get eateryCountry(): EateryCountry {
+        return this._eateryCountry;
     }
 
     get eateryBusinessHours(): EateryBusinessHours {

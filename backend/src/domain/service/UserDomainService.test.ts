@@ -84,4 +84,12 @@ describe('UserDomainService test', () => {
         const updatedUserInDB = await inMemoryUserRepository.findById(updatedUser.userId);
         expect(updatedUserInDB).toBe(updatedUser);
     });
+
+    test('readUser function  test', async () => {
+        const target = await inMemoryUserRepository.read();
+        if (!target) {
+            throw new Error('not found eatery');
+        }
+        expect(target[0]).toBe(beforeEachUser);
+    });
 });

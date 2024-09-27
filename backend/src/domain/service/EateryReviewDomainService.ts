@@ -12,15 +12,17 @@ export default class EateryReviewDomainService {
     }
 
     async deleteEatery(eateryReview: EateryReview): Promise<void> {
-        const targetEateryReview = await this.eateryReviewRepository.find(eateryReview);
+        const targetEateryReview = await this.eateryReviewRepository
+            .findById(eateryReview.eateryReviewId);
         if (!targetEateryReview?.eateryId) {
             throw new Error('Reviewd Eatery not found.');
         }
-        await this.eateryReviewRepository.delete(targetEateryReview.eateryReviewId);
+        await this.eateryReviewRepository.deleteById(targetEateryReview.eateryReviewId);
     }
 
     async updateEatery(eateryReview: EateryReview): Promise<void> {
-        const targetEateryReview = await this.eateryReviewRepository.find(eateryReview);
+        const targetEateryReview = await this.eateryReviewRepository
+            .findById(eateryReview.eateryReviewId);
         if (!targetEateryReview) {
             throw new Error('Eatery Review not found.');
         }

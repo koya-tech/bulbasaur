@@ -1,9 +1,8 @@
-import mongoose from 'mongoose';
 import UserId from './UserId';
 
 describe('UserId', () => {
-    const objectId1 = new mongoose.Types.ObjectId();
-    const objectId2 = new mongoose.Types.ObjectId();
+    const objectId1 = 'userId1';
+    const objectId2 = 'userId2';
 
     // * Normal
     test('Normal test', () => {

@@ -7,7 +7,9 @@ export interface IEateryRepository {
 
     update(eatery: Eatery): Promise<void>;
 
-    delete(eateryId: EateryId): Promise<void>;
+    deleteById(eateryId: EateryId): Promise<void>;
 
-    find(eatery: Eatery): Promise<Eatery | null>;
+    findById(eateryId: EateryId): Promise<Eatery | null>;
+
+    read(): Promise<Eatery[] | null>;
 }

@@ -1,5 +1,4 @@
-import mongoose from 'mongoose';
-import EateryAdress from '../valueObject/eatery/EateryAdress';
+import EateryAddress from '../valueObject/eatery/EateryAddress';
 import EateryBusinessHours from '../valueObject/eatery/EateryBusinessHours';
 import EateryCategory from '../valueObject/eatery/EateryCategory';
 import EateryCountry from '../valueObject/eatery/EateryCountry';
@@ -12,12 +11,12 @@ import EateryRating from '../valueObject/eatery/EateryRating';
 import EateryRegularHolidays from '../valueObject/eatery/EateryRegularHolidays';
 import Eatery from './Eatery';
 
-const mockObjectId = new EateryId(new mongoose.Types.ObjectId());
+const mockObjectId = new EateryId('sdfjsdfkjgier');
 const mockEateryName = new EateryName('Test Eatery');
 const mockEateryCategory = new EateryCategory('Western');
 const mockEateryDescription = new EateryDescription('Description');
 const mockEateryRating = new EateryRating(4.5);
-const mockEateryAddress = new EateryAdress('123 Test St');
+const mockEateryAddress = new EateryAddress('123 Test St');
 const mockEateryLocation = new EateryLocation([56, 78]);
 const mockEateryCountry = new EateryCountry('JPN');
 const mockEateryBusinessHours = new EateryBusinessHours(['08:00', '17:00']);
@@ -47,7 +46,7 @@ describe('Eatery', () => {
         expect(eatery.eateryRating).toEqual(mockEateryRating);
         expect(eatery.eateryAddress).toEqual(mockEateryAddress);
         expect(eatery.eateryLocation).toEqual(mockEateryLocation);
-        expect(eatery.eateryContry).toEqual(mockEateryCountry);
+        expect(eatery.eateryCountry).toEqual(mockEateryCountry);
         expect(eatery.eateryBusinessHours).toEqual(mockEateryBusinessHours);
         expect(eatery.eateryRegularHolidays).toEqual(mockEateryRegularHolidays);
         expect(eatery.eateryImages).toEqual(mockEateryImages);

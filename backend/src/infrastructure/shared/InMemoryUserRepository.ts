@@ -25,4 +25,8 @@ export default class InMemoryUserRepository implements IUserRepository {
 
         return targetUser ? targetUser[1] : null;
     }
+
+    async read(): Promise<User[] | null> {
+        return Object.entries(this.DB).map((pair) => pair[1]);
+    }
 }

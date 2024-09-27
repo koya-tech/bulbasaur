@@ -7,7 +7,7 @@ export default class EateryDomainService {
     ) { }
 
     async IsEateryNameDuplicateCheck(eatery: Eatery) {
-        const duplicateEateryName = await this.eateryRepository.find(eatery);
+        const duplicateEateryName = await this.eateryRepository.findById(eatery.eateryId);
         const isDuplicateEateryName = !!duplicateEateryName;
         return isDuplicateEateryName;
     }
@@ -21,15 +21,15 @@ export default class EateryDomainService {
     }
 
     async deleteEatery(eatery: Eatery): Promise<void> {
-        const targetEatery = await this.eateryRepository.find(eatery);
+        const targetEatery = await this.eateryRepository.findById(eatery.eateryId);
         if (!targetEatery) {
             throw new Error('Eatery not found.');
         }
-        await this.eateryRepository.delete(targetEatery.eateryId);
+        await this.eateryRepository.deleteById(targetEatery.eateryId);
     }
 
     async updateEatery(eatery: Eatery): Promise<void> {
-        const targetEatery = await this.eateryRepository.find(eatery);
+        const targetEatery = await this.eateryRepository.findById(eatery.eateryId);
         if (!targetEatery) {
             throw new Error('Eatery not found.');
         }

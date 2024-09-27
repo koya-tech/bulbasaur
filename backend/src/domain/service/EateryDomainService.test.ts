@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
 import InMemoryEateryRepository from '../../infrastructure/shared/InMemoryEateryRepository';
 import Eatery from '../entities/Eatery';
-import EateryAdress from '../valueObject/eatery/EateryAdress';
+import EateryAddress from '../valueObject/eatery/EateryAddress';
 import EateryBusinessHours from '../valueObject/eatery/EateryBusinessHours';
 import EateryCategory from '../valueObject/eatery/EateryCategory';
 import EateryCountry from '../valueObject/eatery/EateryCountry';
@@ -19,12 +18,12 @@ describe('EateryDomainService', () => {
     let inMemoryEateryRepository: InMemoryEateryRepository;
     let beforeEachEatery: Eatery;
 
-    const sampleEateryId = new EateryId(new mongoose.Types.ObjectId());
+    const sampleEateryId = new EateryId('abcdef');
     const sampleEateryName = new EateryName('subTest Eatery');
     const sampleEateryCategory = new EateryCategory('Western');
     const sampleEateryDescription = new EateryDescription('Description');
     const sampleEateryRating = new EateryRating(4.5);
-    const sampleEateryAddress = new EateryAdress('123 Test St');
+    const sampleEateryAddress = new EateryAddress('123 Test St');
     const sampleEateryLocation = new EateryLocation([56, 78]);
     const sampleEateryCountry = new EateryCountry('JPN');
     const sampleEateryBusinessHours = new EateryBusinessHours(['08:00', '17:00']);
@@ -47,12 +46,12 @@ describe('EateryDomainService', () => {
     beforeEach(async () => {
         inMemoryEateryRepository = new InMemoryEateryRepository();
         eateryDomainService = new EateryDomainService(inMemoryEateryRepository);
-        const beforeEachEateryId = new EateryId(new mongoose.Types.ObjectId());
+        const beforeEachEateryId = new EateryId('ghijk');
         const beforeEachEateryName = new EateryName('Test Eatery');
         const beforeEachEateryCategory = new EateryCategory('Western');
         const beforeEachEateryDescription = new EateryDescription('Description');
         const beforeEachEateryRating = new EateryRating(4.5);
-        const beforeEachEateryAddress = new EateryAdress('123 Test St');
+        const beforeEachEateryAddress = new EateryAddress('123 Test St');
         const beforeEachEateryLocation = new EateryLocation([56, 78]);
         const beforeEachEateryCountry = new EateryCountry('JPN');
         const beforeEachEateryBusinessHours = new EateryBusinessHours(['08:00', '17:00']);
@@ -86,22 +85,22 @@ describe('EateryDomainService', () => {
 
     test('deleteEatery function test', async () => {
         await eateryDomainService.deleteEatery(beforeEachEatery);
-        const target = await inMemoryEateryRepository.find(beforeEachEatery);
+        const target = await inMemoryEateryRepository.findById(beforeEachEatery.eateryId);
         expect(target).toBeNull();
     });
 
     test('registerEatery function  test', async () => {
         await eateryDomainService.registerEatery(sampleEatery);
-        const target = await inMemoryEateryRepository.find(sampleEatery);
+        const target = await inMemoryEateryRepository.findById(sampleEatery.eateryId);
         expect(target).toBe(sampleEatery);
     });
 
     test('updateEatery function test', async () => {
-        const willUpdateEatery = await inMemoryEateryRepository.find(beforeEachEatery);
+        const willUpdateEatery = await inMemoryEateryRepository.findById(beforeEachEatery.eateryId);
         if (willUpdateEatery == null) {
             throw new Error('Eatery not found.');
         }
-        const updatedEatery = Eatery.reconstuct(
+        const updatedEatery = Eatery.reconstruct(
             willUpdateEatery.eateryId,
             new EateryName('updatedEatery'),
             willUpdateEatery.eateryCategory,
@@ -109,13 +108,21 @@ describe('EateryDomainService', () => {
             willUpdateEatery.eateryRating,
             willUpdateEatery.eateryAddress,
             willUpdateEatery.eateryLocation,
-            willUpdateEatery.eateryContry,
+            willUpdateEatery.eateryCountry,
             willUpdateEatery.eateryBusinessHours,
             willUpdateEatery.eateryRegularHolidays,
             willUpdateEatery.eateryImages,
         );
         await eateryDomainService.updateEatery(updatedEatery);
-        const updatedEateryInDB = await inMemoryEateryRepository.find(updatedEatery);
+        const updatedEateryInDB = await inMemoryEateryRepository.findById(updatedEatery.eateryId);
         expect(updatedEateryInDB).toBe(updatedEatery);
+    });
+
+    test('readEatery function  test', async () => {
+        const target = await inMemoryEateryRepository.read();
+        if (!target) {
+            throw new Error('not found eatery');
+        }
+        expect(target[0]).toBe(beforeEachEatery);
     });
 });

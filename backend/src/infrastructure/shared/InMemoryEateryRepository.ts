@@ -15,15 +15,19 @@ export default class InMemoryEateryRepository implements IEateryRepository {
         this.DB[eatery.eateryId.value.toString()] = eatery;
     }
 
-    async delete(eateryId: EateryId) {
+    async deleteById(eateryId: EateryId) {
         delete this.DB[eateryId.value.toString()];
     }
 
-    async find(eatery: Eatery): Promise<Eatery | null> {
+    async findById(eateryId: EateryId): Promise<Eatery | null> {
         const targetEatery = Object.entries(this.DB)
-            .find(([id]) => eatery.eateryId.value.toString() === this.DB[id]
+            .find(([id]) => eateryId.value.toString() === this.DB[id]
                 .eateryId.value.toString());
 
         return targetEatery ? targetEatery[1] : null;
+    }
+
+    async read(): Promise<Eatery[] | null> {
+        return Object.entries(this.DB).map((pair) => pair[1]);
     }
 }

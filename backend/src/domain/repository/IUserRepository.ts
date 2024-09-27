@@ -10,4 +10,6 @@ export interface IUserRepository {
     deleteById(userId: UserId): Promise<void>;
 
     findById(userId: UserId): Promise<User | null>;
+
+    read(): Promise<User[] | null>;
 }

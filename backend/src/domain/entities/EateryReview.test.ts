@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import EateryId from '../valueObject/eatery/EateryId';
 import EateryReviewComment from '../valueObject/eateryReview/EateryReviewComment';
 import EateryReviewId from '../valueObject/eateryReview/EateryReviewId';
@@ -6,11 +5,11 @@ import EateryReviewRating from '../valueObject/eateryReview/EateryReviewRating';
 import UserId from '../valueObject/user/UserId';
 import EateryReview from './EateryReview';
 
-const mockEateryReviewId = new EateryReviewId(new mongoose.Types.ObjectId());
+const mockEateryReviewId = new EateryReviewId('abcdef');
 const mockEateryReviewComment = new EateryReviewComment('Great place!');
 const mockEateryReviewRating = new EateryReviewRating(5);
-const mockEateryId = new EateryId(new mongoose.Types.ObjectId());
-const mockUserId = new UserId(new mongoose.Types.ObjectId());
+const mockEateryId = new EateryId('eatery-id');
+const mockUserId = new UserId('user-id');
 
 describe('EateryReview', () => {
     it('should create an EateryReview instance with the correct properties', () => {

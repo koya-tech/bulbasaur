@@ -1,9 +1,8 @@
-import mongoose from 'mongoose';
 import EateryId from './EateryId';
 
 describe('EateryId', () => {
-    const objectId1 = new mongoose.Types.ObjectId();
-    const objectId2 = new mongoose.Types.ObjectId();
+    const objectId1 = 'dsfkglfdgljdfsfkgdfj';
+    const objectId2 = 'ffdhghjsdfhjgnuvisvu';
 
     // * Normal
     test('Normal test', () => {

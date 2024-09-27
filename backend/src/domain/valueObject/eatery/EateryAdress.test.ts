@@ -1,21 +1,21 @@
-import EateryAdress from './EateryAdress';
+import EateryAddress from './EateryAddress';
 
-describe('EateryAdress', () => {
+describe('EateryAddress', () => {
     // * Normal
     test('Normal test', () => {
-        expect(new EateryAdress('777 Dunsmuir Street 17th Floor Vancouver, BC V7Y 1K4').value).toBe('777 Dunsmuir Street 17th Floor Vancouver, BC V7Y 1K4');
+        expect(new EateryAddress('777 Dunsmuir Street 17th Floor Vancouver, BC V7Y 1K4').value).toBe('777 Dunsmuir Street 17th Floor Vancouver, BC V7Y 1K4');
     });
 
-    test('Equals test of EateryAdress', () => {
-        const EateryAdress1 = new EateryAdress('dummy dummy');
-        const EateryAdress2 = new EateryAdress('dummy dummy');
-        const EateryAdress3 = new EateryAdress('dummy2 dummy2');
-        expect(EateryAdress1.equals(EateryAdress2)).toBeTruthy();
-        expect(EateryAdress1.equals(EateryAdress3)).toBeFalsy();
+    test('Equals test of EateryAddress', () => {
+        const EateryAddress1 = new EateryAddress('dummy dummy');
+        const EateryAddress2 = new EateryAddress('dummy dummy');
+        const EateryAddress3 = new EateryAddress('dummy2 dummy2');
+        expect(EateryAddress1.equals(EateryAddress2)).toBeTruthy();
+        expect(EateryAddress1.equals(EateryAddress3)).toBeFalsy();
     });
 
     // * Abnormal
-    test('Abnormal test. Throw Error when abnormal EateryAdress.', () => {
-        expect(() => new EateryAdress('x'.repeat(2000))).toThrow('The length of adress is too long.');
+    test('Abnormal test. Throw Error when abnormal EateryAddress.', () => {
+        expect(() => new EateryAddress('x'.repeat(2000))).toThrow('The length of adress is too long.');
     });
 });
