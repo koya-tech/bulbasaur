@@ -1,26 +1,28 @@
 import User from '../entities/User';
 import { IUserRepository } from '../repository/IUserRepository';
+import UserId from '../valueObject/user/UserId';
 
 export default class UserDomainService {
     constructor(
         private userRepository: IUserRepository,
     ) { }
 
-    async IsUserNameDuplicateCheck(user: User) {
-        const duplicateUserName = await this.userRepository.findById(user.userId);
+    // already exist same data → true, no exist → false
+    async IsUserNameDuplicate(userId: UserId) {
+        const duplicateUserName = await this.userRepository.findById(userId);
         const isDuplicateUserName = !!duplicateUserName;
         return isDuplicateUserName;
     }
 
     async registerUser(user: User): Promise<void> {
-        if (await this.IsUserNameDuplicateCheck(user)) {
+        if (await this.IsUserNameDuplicate(user.userId)) {
             throw new Error('UserName is already in use.');
         }
         await this.userRepository.save(user);
     }
 
-    async deleteUser(user: User): Promise<void> {
-        const targetUser = await this.userRepository.findById(user.userId);
+    async deleteUser(userId: UserId): Promise<void> {
+        const targetUser = await this.userRepository.findById(userId);
         if (!targetUser) {
             throw new Error('User not found.');
         }
