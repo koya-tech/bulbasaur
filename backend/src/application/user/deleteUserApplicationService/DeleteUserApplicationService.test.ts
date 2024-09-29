@@ -1,24 +1,9 @@
-import bcrypt from 'bcrypt';
-import User from '../../../domain/entities/User';
-import UserId from '../../../domain/valueObject/user/UserId';
-import UserImage from '../../../domain/valueObject/user/UserImage';
-import UserName from '../../../domain/valueObject/user/UserName';
-import UserPassword from '../../../domain/valueObject/user/UserPassword';
 import InMemoryUserRepository from '../../../infrastructure/shared/InMemoryUserRepository';
 import DeleteUserApplicationService, { DeleteUserCommand } from './DeleteUserApplicationService';
 import RegisterUserApplicationService, { RegisterUserCommand } from '../registerUserApplicationService/RegisterUserApplicationService';
+import { sampleUser, updateUser } from '../testUserData';
 
 describe('RegisterUserApplicationService', () => {
-    const sampleSaltRounds = 10;
-    const samplePassword = 'samplePassword';
-    const sampleSalt = bcrypt.genSaltSync(sampleSaltRounds);
-    const sampleHashedPassword = bcrypt.hashSync(samplePassword, sampleSalt);
-    const sampleUser = User.create(
-        new UserId('sample'),
-        new UserName('sample'),
-        new UserPassword(sampleHashedPassword),
-        new UserImage('sample.jpg'),
-    );
     const repository = new InMemoryUserRepository();
     const deleteUserApplicationService = new DeleteUserApplicationService(repository);
 
@@ -35,23 +20,12 @@ describe('RegisterUserApplicationService', () => {
         };
 
         await deleteUserApplicationService.execute(commandForDelete);
-        const createdUser = await repository.findById(sampleUser.userId);
+        const deletedUser = await repository.findById(sampleUser.userId);
 
-        expect(createdUser).toBeNull();
+        expect(deletedUser).toBeNull();
     });
 
     test('throw error if the same name user already exists in DB', async () => {
-        const updateSaltRounds = 10;
-        const updatePassword = 'updatePassword';
-        const updateSalt = bcrypt.genSaltSync(updateSaltRounds);
-        const updateHashedPassword = bcrypt.hashSync(updatePassword, updateSalt);
-        const updateUser = User.create(
-            new UserId('update'),
-            new UserName('update'),
-            new UserPassword(updateHashedPassword),
-            new UserImage('update.jpg'),
-        );
-
         const commandForDelete: Required<DeleteUserCommand> = {
             user: updateUser,
         };
