@@ -15,6 +15,7 @@ describe('RegisterEateryApplicationService', () => {
         const createdEatery = await repository.findById(sampleEatery.eateryId);
 
         expect(createdEatery).not.toBeNull();
+        expect(createdEatery).toEqual(sampleEatery);
     });
 
     test('throw error if the same name eatery already exists in DB', async () => {

@@ -37,7 +37,7 @@ const differentSalt = bcrypt.genSaltSync(differentSaltRounds);
 const differentHashedPassword = bcrypt.hashSync(differentPassword, differentSalt);
 export const differentUser = User.create(
     new UserId('different'),
-    new UserName('update'),
+    new UserName('different'),
     new UserPassword(differentHashedPassword),
-    new UserImage('update.jpg'),
+    new UserImage('different.jpg'),
 );

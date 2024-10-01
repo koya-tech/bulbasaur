@@ -6,12 +6,12 @@ export default class EateryReviewDomainService {
         private eateryReviewRepository: IEateryReviewRepository,
     ) { }
 
-    async registerEatery(eateryReview: EateryReview): Promise<EateryReview> {
+    async registerEateryReview(eateryReview: EateryReview): Promise<EateryReview> {
         await this.eateryReviewRepository.save(eateryReview);
         return eateryReview;
     }
 
-    async deleteEatery(eateryReview: EateryReview): Promise<void> {
+    async deleteEateryReview(eateryReview: EateryReview): Promise<void> {
         const targetEateryReview = await this.eateryReviewRepository
             .findById(eateryReview.eateryReviewId);
         if (!targetEateryReview?.eateryId) {
@@ -20,7 +20,7 @@ export default class EateryReviewDomainService {
         await this.eateryReviewRepository.deleteById(targetEateryReview.eateryReviewId);
     }
 
-    async updateEatery(eateryReview: EateryReview): Promise<void> {
+    async updateEateryReview(eateryReview: EateryReview): Promise<void> {
         const targetEateryReview = await this.eateryReviewRepository
             .findById(eateryReview.eateryReviewId);
         if (!targetEateryReview) {

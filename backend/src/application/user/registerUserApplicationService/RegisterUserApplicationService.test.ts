@@ -14,11 +14,10 @@ describe('RegisterUserApplicationService', () => {
         const createdUser = await repository.findById(sampleUser.userId);
 
         expect(createdUser).not.toBeNull();
+        expect(createdUser).toEqual(sampleUser);
     });
 
     test('throw error if the same name user already exists in DB', async () => {
-        await registerUserApplicationService.execute(command);
-
         await expect(registerUserApplicationService.execute(command)).rejects.toThrow();
     });
 });

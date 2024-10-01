@@ -34,14 +34,14 @@ describe('EateryReviewDomainService', () => {
     });
 
     test('deleteEateryReview function test', async () => {
-        await eateryReviewDomainService.deleteEatery(beforeEachEateryReview);
+        await eateryReviewDomainService.deleteEateryReview(beforeEachEateryReview);
         const target = await inMemoryEateryReviewRepository
             .findById(beforeEachEateryReview.eateryReviewId);
         expect(target).toBeNull();
     });
 
     test('registerEateryReview function  test', async () => {
-        await eateryReviewDomainService.registerEatery(sampleEateryReview);
+        await eateryReviewDomainService.registerEateryReview(sampleEateryReview);
         const target = await inMemoryEateryReviewRepository
             .findById(sampleEateryReview.eateryReviewId);
         expect(target).toBe(sampleEateryReview);
@@ -60,7 +60,7 @@ describe('EateryReviewDomainService', () => {
             willEateryReview.eateryId,
             willEateryReview.userId,
         );
-        await eateryReviewDomainService.updateEatery(updatedEateryReview);
+        await eateryReviewDomainService.updateEateryReview(updatedEateryReview);
         const updatedEateryReviewInDB = await inMemoryEateryReviewRepository
             .findById(updatedEateryReview.eateryReviewId);
         expect(updatedEateryReview).toBe(updatedEateryReviewInDB);
