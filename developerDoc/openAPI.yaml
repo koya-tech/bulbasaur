@@ -1,0 +1,395 @@
+openapi: 3.0.3
+info:
+  title: DDD-EateryAPP - OpenAPI 3.0
+  description: |-
+    This is Eatery App Server based on the OpenAPI 3.0 specification.  
+    [Github Repository](https://github.com/koya-tech/DDD-EateryAPP)
+
+  contact:
+    email: koya9431ptr@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+tags:
+  - name: user
+    description: End point about user info
+  - name: eatery
+    description: End point about eatery info
+  - name: eateryReview
+    description: End point about eatery review info
+
+paths:
+  # USER
+  "/api/v1/users/{userId}":
+    get:
+      tags:
+        - user
+      summary: Get user info
+      description: get user info(userName, userPassword, userImage)
+      operationId: getUserInfo
+      parameters:
+        - $ref: "#/components/parameters/UserId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    put:
+      tags:
+        - user
+      summary: Update user info
+      description: update user info(userName, userPassword, userImage)
+      operationId: updateUserInfo
+      requestBody:
+        description: User object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    delete:
+      tags:
+        - user
+      summary: Delete user info
+      description: delete user info(userName, userPassword, userImage)
+      operationId: deleteUserInfo
+      parameters:
+        - $ref: "#/components/parameters/UserId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  "/api/v1/user":
+    post:
+      tags:
+        - user
+      summary: Create user
+      description: create user info(userName, userPassword, userImage)
+      operationId: createUser
+      requestBody:
+        description: User object that needs to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  # EATERY
+  "/api/v1/eatery/{eateryId}":
+    get:
+      tags:
+        - eatery
+      summary: Get eatery info
+      description: get eatery info(eateryName, eateryImage, eateryLocation, eateryCategory)
+      operationId: getEateryInfo
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Eatery"
+    put:
+      tags:
+        - eatery
+      summary: Update eatery info
+      description: update eatery info(eateryName, eateryImage, eateryLocation, eateryCategory)
+      operationId: updateEateryInfo
+      requestBody:
+        description: Eatery object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Eatery"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Eatery"
+    delete:
+      tags:
+        - eatery
+      summary: Delete eatery info
+      description: delete eatery info(eateryName, eateryImage, eateryLocation, eateryCategory)
+      operationId: deleteEateryInfo
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Eatery"
+
+  "/api/v1/eatery/":
+    post:
+      tags:
+        - eatery
+      summary: Create eatery
+      description: create eatery info(eateryName, eateryImage, eateryLocation, eateryCategory)
+      operationId: createEatery
+      requestBody:
+        description: Eatery object that needs to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Eatery"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Eatery"
+
+  "/api/v1/eateries":
+    get:
+      tags:
+        - eatery
+      summary: Get all eateries
+      description: get all eateries info(eateryName, eateryImage, eateryLocation, eateryCategory)
+      operationId: getAllEateryInfo
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Eatery"
+
+  # EATERY REVIEW
+  "/api/v1/eatery/{eateryId}/eateryReviews":
+    get:
+      tags:
+        - eateryReview
+      summary: Get eatery reviews
+      description: get eatery reviews
+      operationId: getEateryReviews
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EateryReview"
+  "/api/v1/eatery/{eateryId}/eateryReview":
+    post:
+      tags:
+        - eateryReview
+      summary: Create eatery review
+      description: create eatery review
+      operationId: createEateryReview
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+      requestBody:
+        description: EateryReview object that needs to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EateryReview"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EateryReview"
+  "/api/v1/eatery/{eateryId}/{eateryReviewId}":
+    get:
+      tags: 
+        - eateryReview
+      summary: Get eatery review
+      description: get eatery review
+      operationId: getEateryReview
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+        - $ref: "#/components/parameters/EateryReviewId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EateryReview"
+
+    put:
+      tags:
+        - eateryReview
+      summary: Update eatery review
+      description: update eatery review
+      operationId: updateEateryReview
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+        - $ref: "#/components/parameters/EateryReviewId"
+      requestBody:
+        description: EateryReview object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EateryReview"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EateryReview"
+    delete:
+      tags:
+        - eateryReview
+      summary: Delete eatery review
+      description: delete eatery review
+      operationId: deleteEateryReview
+      parameters:
+        - $ref: "#/components/parameters/EateryId"
+        - $ref: "#/components/parameters/EateryReviewId"
+      responses:
+        "200":
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EateryReview"
+
+components:
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      description: ID of user to return
+      required: true
+      schema:
+        type: string
+        format: objectId
+    EateryId:
+      name: eateryId
+      in: path
+      description: ID of eatery to return
+      required: true
+      schema:
+        type: string
+        format: objectId
+    EateryReviewId:
+      name: eateryReviewId
+      in: path
+      description: ID of eatery review to return
+      required: true
+      schema:
+        type: string
+        format: objectId
+  schemas:
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: objectId
+        userPassword:
+          type: string
+        userName:
+          type: string
+        userImage:
+          type: string
+      required:
+        - userId
+        - userName
+        - userImage
+        - userPassword
+    Eatery:
+      type: object
+      properties:
+        eateryId:
+          type: string
+          format: objectId
+        eateryName:
+          type: string
+        eateryCategory:
+          type: string
+        eateryDescription:
+          type: string
+        eateryRating:
+          type: number
+        eateryAddress:
+          type: string
+        eateryLocation:
+          type: array
+        eateryCountry:
+          type: string
+        eaterBusinessHours:
+          type: array
+        eateryImage:
+          type: array
+      required:
+        - eateryId
+        - eateryName
+        - eateryCategory
+        - eateryDescription
+        - eateryRating
+        - eateryAddress
+        - eateryLocation
+        - eateryCountry
+        - eateryBusinessHours
+        - eateryRegularHoliday
+        - eateryImage
+    EateryReview:
+      type: object
+      properties:
+        eateryReviewId:
+          type: string
+          format: objectId
+        eateryId:
+          type: string
+          format: objectId
+        userId:
+          type: string
+          format: objectId
+        eateryReviewRating:
+          type: number
+        eateryReviewComment:
+          type: string
+      required:
+        - eateryReviewId
+        - eateryId
+        - userId
+        - eateryReviewRating
+        - eateryReviewComment
