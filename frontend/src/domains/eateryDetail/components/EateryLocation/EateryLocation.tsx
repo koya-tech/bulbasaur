@@ -2,11 +2,11 @@ import { MapContainer, Marker, Popup } from 'react-leaflet';
 import { TileLayer } from 'react-leaflet/TileLayer';
 import './leaflet/leaflet.css';
 import { icon, latLng } from 'leaflet';
-import EateryeateryAdressProps from './type';
+import EateryAddressProps from './type';
 
-function EasteryeateryAdress(eateryeateryAdressProps: EateryeateryAdressProps) {
-    const { eateryAdress } = eateryeateryAdressProps;
-    const position = latLng([eateryAdress.latitude, eateryAdress.longitude]);
+function EateryLocation(eateryAddressProps: EateryAddressProps) {
+    const { eateryAddress } = eateryAddressProps;
+    const position = latLng([eateryAddress.latitude, eateryAddress.longitude]);
     const zoom = 12;
     const markerIcon = icon({
         iconUrl: 'pin.png',
@@ -34,4 +34,4 @@ function EasteryeateryAdress(eateryeateryAdressProps: EateryeateryAdressProps) {
     );
 }
 
-export default EasteryeateryAdress;
+export default EateryLocation;

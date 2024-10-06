@@ -1,7 +1,7 @@
 type EateryCardProps = {
     eateryName: string;
     eateryDescription: string;
-    eateryAdress: string;
+    eateryAddress: string;
     eateryImage: string;
     eateryRating: number;
 };

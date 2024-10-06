@@ -1,12 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import EasteryLocation from './EasteryLocation';
+import EateryLocation from './EateryLocation';
 
-const meta: Meta<typeof EasteryLocation> = {
-    component: EasteryLocation,
+const meta: Meta<typeof EateryLocation> = {
+    component: EateryLocation,
 };
 
 export default meta;
-type Story = StoryObj<typeof EasteryLocation>;
+type Story = StoryObj<typeof EateryLocation>;
 
 export const Primary: Story = {
+    args: {
+        eateryAddress: {
+            latitude: 37.7749,
+            longitude: -122.4194,
+        },
+    },
 };

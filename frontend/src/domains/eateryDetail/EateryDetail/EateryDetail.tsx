@@ -1,6 +1,6 @@
 import eatrySample from '../../sampleData';
 import EateryInfo from '../components/EateryInfo/EateryInfo';
-import EasteryLocation from '../components/EateryLocation/EasteryLocation';
+import EateryLocation from '../components/EateryLocation/EateryLocation';
 import EateryTitle from '../components/EateryTitle/EateryTitle';
 import EateryReviews from '../components/EatryReviews/EateryReviews';
 import ImgDisplay from '../components/ImgDisplay/ImgDisplay';
@@ -19,14 +19,14 @@ function EateryDetail() {
                 eateryDescription={data.eateryDescription}
                 eateryRating={data.eateryRating}
                 eateryCountry={data.eateryCountry}
-                eateryAdress={data.eateryAdress}
+                eateryAddress={data.eateryAddress}
                 eateryBusinessHours={data.eateryBusinessHours}
                 eateryRegularHolidays={data.eateryRegularHolidays}
                 createdAt={data.createdAt}
                 updatedAt={data.updatedAt}
             />
             <EateryReviews />
-            <EasteryLocation eateryAdress={data.location} />
+            <EateryLocation eateryAddress={data.location} />
         </div>
     );
 }

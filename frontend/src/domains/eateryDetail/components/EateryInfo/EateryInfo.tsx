@@ -1,22 +1,22 @@
 import EateryInfoProps from './type';
 
-function EateryInfo(eatryInfoProps: EateryInfoProps) {
+function EateryInfo(eateryInfoProps: EateryInfoProps) {
     const {
         eateryDescription,
-        eateryAdress,
+        eateryAddress,
         eateryRating,
         eateryBusinessHours,
         eateryRegularHolidays,
         updatedAt,
-    } = eatryInfoProps;
+    } = eateryInfoProps;
     return (
         <div className="p-3">
             <div>
                 <p className="text-xl">
-                    Adress
+                    address
                 </p>
                 <p>
-                    {eateryAdress}
+                    {eateryAddress}
                 </p>
             </div>
             <div>

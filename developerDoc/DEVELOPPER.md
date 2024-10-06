@@ -18,8 +18,8 @@ EATERY
 - EateryReview
 - EateryRating
 - EateryCountry
-<!-- this is adress -->
-- EateryAdress 
+<!-- this is address -->
+- EateryAddress 
 <!-- this is latitude, longitude info -->
 - EateryLocation 
 - EateryBusinessHours

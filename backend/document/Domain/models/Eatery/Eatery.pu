@@ -10,7 +10,7 @@ package "EateryAggregation" {
         storeDescription
         storeScore
         conuntry
-        storeAdress
+        storeaddress
         location
         storeImages
         businessHours
@@ -45,7 +45,7 @@ package "EateryAggregation" {
         + value: string
     }
 
-    class storeAdress {
+    class storeaddress {
         + value: string
     }
 
@@ -91,7 +91,7 @@ package "EateryAggregation" {
     Eatery *-down- storeDescription
     Eatery *-down- storeScore
     Eatery *-down- conuntry
-    Eatery *-down- storeAdress
+    Eatery *-down- storeaddress
     Eatery *-down- location
     Eatery *-down- storeImages
     Eatery *-down- businessHours

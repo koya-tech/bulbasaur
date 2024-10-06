@@ -9,4 +9,8 @@ export default meta;
 type Story = StoryObj<typeof EateryTitle>;
 
 export const Primary: Story = {
+    args: {
+        eateryName: 'eateryName',
+        eateryCategory: 'eateryCategory',
+    },
 };

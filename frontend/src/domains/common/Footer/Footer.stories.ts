@@ -4,9 +4,9 @@ import Footer from './Footer';
 // eslint-disable-next-line import/extensions
 import { routeList } from '../constants/index';
 
-const meta = {
+const meta: Meta<typeof Footer> = {
     component: Footer,
-} satisfies Meta<typeof Footer>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -16,7 +16,7 @@ export const Primary: Story = {
         primary: true,
         label: 'Footer',
     },
-    play: async ({ canvasElement }) => {
+    play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
         const canvas = within(canvasElement);
 
         await Promise.all(routeList.map(async (item) => {

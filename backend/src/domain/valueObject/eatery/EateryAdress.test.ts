@@ -16,6 +16,6 @@ describe('EateryAddress', () => {
 
     // * Abnormal
     test('Abnormal test. Throw Error when abnormal EateryAddress.', () => {
-        expect(() => new EateryAddress('x'.repeat(2000))).toThrow('The length of adress is too long.');
+        expect(() => new EateryAddress('x'.repeat(2000))).toThrow('The length of address is too long.');
     });
 });

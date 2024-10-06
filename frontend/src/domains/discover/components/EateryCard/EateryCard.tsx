@@ -14,7 +14,7 @@ function EateryCard(eateryCardProps: EateryCardProps) {
         eateryName,
         eateryDescription,
         eateryRating,
-        eateryAdress,
+        eateryAddress,
         eateryImage,
     } = eateryCardProps;
     return (
@@ -30,7 +30,7 @@ function EateryCard(eateryCardProps: EateryCardProps) {
                             <CardDescription className="line-clamp-2">{eateryDescription}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <p>{eateryAdress}</p>
+                            <p>{eateryAddress}</p>
                         </CardContent>
                         <CardFooter className="flex gap-3">
                             <p>Score</p>

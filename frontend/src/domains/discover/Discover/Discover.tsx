@@ -12,7 +12,7 @@ function Discover() {
                     <EateryCard
                         eateryName={data.eateryName}
                         eateryDescription={data.eateryDescription}
-                        eateryAdress={data.eateryAdress}
+                        eateryAddress={data.eateryAddress}
                         eateryImage={data.eateryImages[0].imgUrl}
                         eateryRating={data.eateryRating}
                     />

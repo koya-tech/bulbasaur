@@ -2,7 +2,7 @@ type EateryInfoProps = {
     eateryDescription: string,
     eateryRating: number,
     eateryCountry: string,
-    eateryAdress: string,
+    eateryAddress: string,
     eateryBusinessHours: {
         start: string,
         end: string,

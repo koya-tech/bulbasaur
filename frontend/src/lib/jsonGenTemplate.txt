@@ -8,7 +8,7 @@ https://json-generator.com/#
     storeDescription: '{{lorem(1, "paragraphs")}}',
     storeScore:'{{integer(1,5)}}',
     conuntry:'{{country()}}',
-    storeAdress: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    storeaddress: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
     storeImage: [
       '{{repeat(3, 5)}}',
          {
